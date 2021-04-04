@@ -9,6 +9,16 @@ itinerariesRouter.get('/', async (request, response) => {
     response.json(itineraries)
 })
 
+itinerariesRouter.get('/:city', async (request, response) => {
+    const cityName = request.params.city
+    const city = await City.findOne({ name: cityName })
+    const itinerariesOf = await Itinerary
+        .find({ city: city._id })
+    console.log(itinerariesOf)
+    
+    response.json(itinerariesOf)
+})
+
 itinerariesRouter.post('/', async (request, response) => {
     const body = request.body
     const city = await City.findOne({ name: body.city })

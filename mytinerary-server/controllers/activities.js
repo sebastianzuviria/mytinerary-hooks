@@ -26,8 +26,7 @@ activitiesRouter.post('/', async (request, response) => {
         description: body.description,
         itinerary: itinerary._id,
         comments: [],
-        likes: [],
-        unlikes: [],
+        favs: [],
     })
 
     const savedActivity = await activity.save()

@@ -1,10 +1,14 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const cors = require('cors')
 const countriesRouter = require('./controllers/countries')
 const citiesRouter = require('./controllers/cities')
 const itinerariesRouter = require('./controllers/itineraries')
 const activitiesRouter = require('./controllers/activities')
+const usersRouter = require('./controllers/users')
+const loginRouter = require('./controllers/login')
 
 const MONGODB_URI = 'mongodb+srv://szuviria:321321321@mytinerary-app.aiu01.mongodb.net/mytinerary?retryWrites=true&w=majority'
 
@@ -16,6 +20,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true,
         console.log('error connecting to MongoDB: ', error.message )
     })
 
+app.use(cors())
 app.use(express.json())
 app.use('/**', (request, response, next) => {
     console.log('Method: ', request.method)
@@ -33,7 +38,7 @@ app.use('/api/countries', countriesRouter)
 app.use('/api/cities', citiesRouter)
 app.use('/api/itineraries', itinerariesRouter)
 app.use('/api/activities', activitiesRouter)
-
-
+app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 module.exports = app
