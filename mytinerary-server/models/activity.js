@@ -10,7 +10,7 @@ const activitySchema = new mongoose.Schema({
     img: {
         type: String,
     },
-    time: {
+    duration: {
         type: Number,
     },
     price: {
@@ -19,23 +19,27 @@ const activitySchema = new mongoose.Schema({
     description: {
         type: String,
     },
+    itinerary: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Itinerary' 
+    },
     comments: [ 
-        {        
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Comment'
-        }   
+        // {        
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: 'Comment'
+        // }   
     ],
     likes: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User' 
-        }
+        // {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: 'User' 
+        // }
     ],
     unlikes: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User' 
-        }
+        // {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: 'User' 
+        // }
     ],
 })
 

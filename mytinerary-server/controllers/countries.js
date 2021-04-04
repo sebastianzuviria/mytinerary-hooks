@@ -3,7 +3,7 @@ const Country = require('../models/country')
 
 countriesRouter.get('/', async (request, response) => {
     const countries = await Country
-        .find({}).populate('city', { name: 1 })
+        .find({}).populate('cities', { name: 1, img: 1, url: 1, id: 1 })
 
     response.json(countries)    
 })
@@ -31,6 +31,20 @@ countriesRouter.delete('/:id', async (request, response) => {
 
     await Country.findByIdAndDelete(id)
     return response.status(204).end()
+})
+
+countriesRouter.put('/:id', async (request, response) => {
+    const body = request.body
+    const country = await Country.findById(request.params.id)
+
+    const newCountry = {
+        name: body.name,
+        flag: body.flag,
+        cities: country.cities
+    }
+
+    const updatedCountry = await Country.findByIdAndUpdate(request.para.id, newCountry, { new: true })
+    response.json(updatedCountry)
 })
 
 module.exports = countriesRouter

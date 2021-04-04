@@ -8,9 +8,12 @@ const itinerarySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'City'
     },
+    // user: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User'
+    // },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        type: String,
     },
     userPhotos: [
         {
@@ -22,7 +25,21 @@ const itinerarySchema = new mongoose.Schema({
     },
     duration: {
         type: Number,
-    }
+    },
+    price: {
+        type: Number,
+    },
+    hashtags: [
+        {
+            type: String,
+        }
+    ],
+    activities: [
+        // {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: 'Activity'
+        // }
+    ]
 })
 
 itinerarySchema.set('toJSON', {
