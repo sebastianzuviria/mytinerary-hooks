@@ -6,8 +6,14 @@ const getFavs = async (id) => {
     return response.data
 }
 
+const unFav = async (userId, itineraryId) => {
+    const response = await axios.put(`${baseUrl}/${userId}`, {itineraryId})
+    return response.data
+}
+
 const userServices = {
-    getFavs
+    getFavs,
+    unFav
 }
 
 export default userServices
