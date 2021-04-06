@@ -29,12 +29,6 @@ const activitySchema = new mongoose.Schema({
         //     ref: 'Comment'
         // }   
     ],
-    favs: [
-        // {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: 'User' 
-        // }
-    ],
 })
 
 activitySchema.set('toJSON', {

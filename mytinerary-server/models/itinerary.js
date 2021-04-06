@@ -35,10 +35,16 @@ const itinerarySchema = new mongoose.Schema({
         }
     ],
     activities: [
-        // {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: 'Activity'
-        // }
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Activity'
+        }
+    ],
+    favs: [
+        {
+             type: mongoose.Schema.Types.ObjectId,
+             ref: 'User' 
+        }
     ]
 })
 

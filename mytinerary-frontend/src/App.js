@@ -6,12 +6,14 @@ import {
   BrowserRouter as Router,
   Switch, Route, Link
 } from 'react-router-dom'
-import Home from './views/Home/index.js'
-import About from './views/About/index.js'
-import Cities from './views/Cities/index.js'
-import Signin from './views/Signin/index.js'
-import Signup from './views/Signup/index.js'
+import Home from './views/Home/index'
+import About from './views/About/index'
+import Cities from './views/Cities/index'
+import Signin from './views/Signin/index'
+import Signup from './views/Signup/index'
 import Itineraries from './views/Itineraries/index'
+import Favourites from './views/Favourites/index'
+import itineraryServices from './services/itineraries'
 
 
 const App = () => {
@@ -42,6 +44,7 @@ const App = () => {
     const loggedUserJSON = window.localStorage.getItem('loggedMytineraryUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
+      itineraryServices.setToken(user.token)
       dispatch(setUser(user))
     }
   }, []) //eslint-disable-line
@@ -61,7 +64,7 @@ const App = () => {
         {!user && <Link style={styles.buttonNav} to='/singin'>Singin</Link>}
         {!user && <Link style={styles.buttonNav} to='/singup'>Singup</Link>}
         {user && <Link style={styles.buttonNav} to='/favourites'>Favourites</Link>}
-        {user && <button onClick={handleLogout}>Logout</button>}
+        {user && <button style={styles.buttonNav} onClick={handleLogout}>Logout</button>}
       </div>
       <div style={styles.title}>MYitinerary</div>
         <Switch>
@@ -76,6 +79,9 @@ const App = () => {
           </Route>
           <Route path='/about'>
             <About />
+          </Route>
+          <Route path='/favourites'>
+            <Favourites user={user}/>
           </Route>
           <Route path='/itineraries/:city' component={Itineraries}/>
           <Route path='/'>

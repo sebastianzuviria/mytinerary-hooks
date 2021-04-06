@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     favs: [ 
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Activity'
+            ref: 'Itinerary'
         }
     ],
     likedComments: [

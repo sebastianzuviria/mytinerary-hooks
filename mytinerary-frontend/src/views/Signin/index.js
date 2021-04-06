@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import loginServices from '../../services/login'
 import { setUser } from '../../reducers/userReducer'
 import { useHistory } from 'react-router-dom'
+import itineraryServices from '../../services/itineraries'
 
 const Signin = () => {
     const [username, setUsername] = useState('')
@@ -20,6 +21,7 @@ const Signin = () => {
             window.localStorage.setItem(
                 'loggedMytineraryUser', JSON.stringify(user)
             )
+            itineraryServices.setToken(user.token)
             dispatch(setUser(user))
             history.push('/')
         } catch (exception) {

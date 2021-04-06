@@ -12,7 +12,6 @@ const itineraryReducer = (state = [], action) => {
 export const getItinerariesOf = (city) => {
     return async dispatch => {
         const itineraries = await itineraryServices.getItinerariesOf(city)
-        console.log(itineraries)
         dispatch({
             type: 'GET_ITINERARIES',
             data: itineraries

@@ -9,6 +9,14 @@ citiesRouter.get('/', async (request, response) => {
     response.json(cities)    
 })
 
+citiesRouter.get('/:id', async (request, response) => {
+    const id = request.params.id
+
+    const city = await City.findById(id)
+
+    response.json(city)
+})
+
 citiesRouter.post('/', async (request, response) => {
     const body = request.body 
 

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getItinerariesOf } from '../../reducers/itineraryReducer'
+import Itinerary from '../../components/Itinerary/index'
 
 const Itineraries = ({ match }) => {
     const dispatch = useDispatch()
@@ -9,21 +10,22 @@ const Itineraries = ({ match }) => {
     useEffect(() => {
         dispatch(getItinerariesOf(city))
     }, [dispatch, city])
-  
+
     return (
         <div>
         <div>Itineraries of {city}</div>
-        {itineraries.map(i => {
-            return (
-                <div key={i.id}>
-                    <div>name: {i.name}</div>
-                    <div>rating: {i.rating}</div>
-                    <div>price: {i.price}</div>
-                    <div>hashtags: {i.hashtags.map(h => <div key={h}>{h}</div>)}</div>
-                </div>
-                
-            )
-        })}
+        {itineraries.map(i => 
+            <Itinerary
+                key={i.id} 
+                itineraryName={i.name}
+                itineraryRating={i.rating}
+                itineraryPrice={i.price}
+                itineraryHashtags={i.hashtags}
+                itineraryActivities={i.activities}
+                itineraryFavs={i.favs}
+                city={city}
+            />         
+        )}
         </div>
     )
 }
