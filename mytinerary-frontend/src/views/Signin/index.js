@@ -4,6 +4,7 @@ import loginServices from '../../services/login'
 import { setUser } from '../../reducers/userReducer'
 import { useHistory } from 'react-router-dom'
 import itineraryServices from '../../services/itineraries'
+import commentServices from '../../services/comments'
 
 const Signin = () => {
     const [username, setUsername] = useState('')
@@ -22,6 +23,7 @@ const Signin = () => {
                 'loggedMytineraryUser', JSON.stringify(user)
             )
             itineraryServices.setToken(user.token)
+            commentServices.setToken(user.token)
             dispatch(setUser(user))
             history.push('/')
         } catch (exception) {

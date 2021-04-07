@@ -23,12 +23,6 @@ const activitySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Itinerary' 
     },
-    comments: [ 
-        // {        
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: 'Comment'
-        // }   
-    ],
 })
 
 activitySchema.set('toJSON', {

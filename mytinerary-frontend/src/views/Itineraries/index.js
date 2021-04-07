@@ -21,17 +21,22 @@ const Itineraries = ({ match }) => {
     return (
         <div>
         <div>Itineraries of {city}</div>
-        {itineraries.map(i => 
+        {itineraries.map(i => { 
+            return (
             <Itinerary
                 key={i.id}
-                functionFav={handleFav} 
+                functionFav={handleFav}
+                itineraryId={i.id} 
                 itineraryName={i.name}
                 itineraryRating={i.rating}
                 itineraryPrice={i.price}
                 itineraryHashtags={i.hashtags}
                 itineraryActivities={i.activities}
                 itineraryFavs={i.favs}
-            />         
+                itineraryComments={i.comments}
+                city={city}
+            />  
+            )}       
         )}
         </div>
     )

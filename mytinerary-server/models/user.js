@@ -21,11 +21,23 @@ const userSchema = new mongoose.Schema({
             ref: 'Itinerary'
         }
     ],
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ],
     likedComments: [
-        // {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: 'Comment'
-        // }
+        {
+             type: mongoose.Schema.Types.ObjectId,
+             ref: 'Comment'
+        }
+    ],
+    dislikedComments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
     ]
 })
 

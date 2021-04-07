@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Activity from '../Activity/index'
+import Comment from '../Comment/index'
+import CommentForm from '../CommentForm/index'
 
 const styles = {
     card: {
@@ -19,14 +21,17 @@ const styles = {
     }
 }
 
-const Itinerary = ({ 
+const Itinerary = ({
+    itineraryId, 
     itineraryName,
     itineraryRating,
     itineraryPrice,
     itineraryHashtags,
     itineraryActivities,
     itineraryFavs,
-    functionFav
+    itineraryComments,
+    functionFav,
+    city
  }) => {
     const [display, setDisplay] = useState(false)
     const [index, setIndex] = useState(0)
@@ -107,6 +112,26 @@ const Itinerary = ({
                 }
              </div>
             }
+            {itineraryComments.length === 0 
+            ? <div>no comments</div>
+            : itineraryComments.map(c => {
+                return(
+                <Comment 
+                    key={c.id}
+                    commentContent={c.content}
+                    commentLikes={c.likes}
+                    commentDislikes={c.dislikes}
+                    commentUser={c.user}
+                />
+                )
+            })
+            }
+            <div>
+                <CommentForm
+                    itineraryId={itineraryId}
+                    city={city}
+                />
+            </div>
         </div>
     )
 }

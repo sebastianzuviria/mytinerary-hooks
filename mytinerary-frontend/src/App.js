@@ -14,6 +14,7 @@ import Signup from './views/Signup/index'
 import Itineraries from './views/Itineraries/index'
 import Favourites from './views/Favourites/index'
 import itineraryServices from './services/itineraries'
+import commentServices from './services/comments';
 
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       itineraryServices.setToken(user.token)
+      commentServices.setToken(user.token)
       dispatch(setUser(user))
     }
   }, []) //eslint-disable-line

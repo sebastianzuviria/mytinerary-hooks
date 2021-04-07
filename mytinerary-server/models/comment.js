@@ -8,9 +8,9 @@ const commentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    activity: {
+    itinerary: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Activity'
+        ref: 'Itinerary'
     },
     likes: [
         {
@@ -18,7 +18,7 @@ const commentSchema = new mongoose.Schema({
             ref: 'User'
         }
     ],
-    unlikes: [
+    dislikes: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

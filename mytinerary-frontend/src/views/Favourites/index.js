@@ -39,7 +39,8 @@ const Favourites = ({ user }) => {
                     return (
                         <Itinerary
                             key={i.id}
-                            functionFav={unFav} 
+                            functionFav={unFav}
+                            itineraryId={i.id}  
                             itineraryName={i.name}
                             itineraryRating={i.rating}
                             itineraryPrice={i.price}

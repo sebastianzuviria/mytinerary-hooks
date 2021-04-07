@@ -9,6 +9,7 @@ const itinerariesRouter = require('./controllers/itineraries')
 const activitiesRouter = require('./controllers/activities')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
+const commentsRouter = require('./controllers/comments')
 
 const MONGODB_URI = 'mongodb+srv://szuviria:321321321@mytinerary-app.aiu01.mongodb.net/mytinerary?retryWrites=true&w=majority'
 
@@ -40,5 +41,6 @@ app.use('/api/itineraries', itinerariesRouter)
 app.use('/api/activities', activitiesRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/comments', commentsRouter)
 
 module.exports = app

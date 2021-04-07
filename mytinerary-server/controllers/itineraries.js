@@ -23,7 +23,14 @@ itinerariesRouter.get('/:city', async (request, response) => {
     const cityName = request.params.city
     const city = await City.findOne({ name: cityName })
     const itinerariesOf = await Itinerary
-        .find({ city: city._id }).populate('activities')
+        .find({ city: city._id })
+        .populate('activities')
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user'
+            }
+        })
     
     response.json(itinerariesOf)
 })
