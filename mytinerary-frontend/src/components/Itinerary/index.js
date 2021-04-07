@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Activity from '../Activity/index'
-import itineraryServices from '../../services/itineraries'
-import { getItinerariesOf } from '../../reducers/itineraryReducer'
 
 const styles = {
     card: {
@@ -28,30 +26,26 @@ const Itinerary = ({
     itineraryHashtags,
     itineraryActivities,
     itineraryFavs,
-    city
+    functionFav
  }) => {
     const [display, setDisplay] = useState(false)
     const [index, setIndex] = useState(0)
     const [isFav, setIsFav] = useState(false)
     const user = useSelector(state => state.user)
-    const dispatch = useDispatch()
 
     const show = display ? { display: ''} : { display: 'none' }
 
     useEffect(() => {
         const fav = itineraryFavs.find(u => String(u) === String(user.id)) ? true : false
         setIsFav(fav)
-    }, [itineraryFavs, user])
-
-    const handleFav = async () => {
-        setIsFav(!isFav)
-        await itineraryServices.favItinerary(city)
-        dispatch(getItinerariesOf(city))
-    }
+    }, [itineraryFavs, user]) //eslint-disable-line
 
     return (
         <div style={styles.card}>
-            <button onClick={handleFav}>{isFav ? 'unfav' : 'fav'}</button> 
+            <button onClick={() => {
+                functionFav()
+                setIsFav(!isFav)
+                }}>{isFav ? 'unFav' : 'Fav'}</button> 
             <div>
                 name: {itineraryName}
             </div>

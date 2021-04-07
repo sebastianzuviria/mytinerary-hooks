@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getItinerariesOf } from '../../reducers/itineraryReducer'
 import Itinerary from '../../components/Itinerary/index'
+import itineraryServices from '../../services/itineraries'
+
 
 const Itineraries = ({ match }) => {
     const dispatch = useDispatch()
@@ -11,19 +13,24 @@ const Itineraries = ({ match }) => {
         dispatch(getItinerariesOf(city))
     }, [dispatch, city])
 
+    const handleFav = async () => {
+        await itineraryServices.favItinerary(city)
+        dispatch(getItinerariesOf(city))
+    }
+
     return (
         <div>
         <div>Itineraries of {city}</div>
         {itineraries.map(i => 
             <Itinerary
-                key={i.id} 
+                key={i.id}
+                functionFav={handleFav} 
                 itineraryName={i.name}
                 itineraryRating={i.rating}
                 itineraryPrice={i.price}
                 itineraryHashtags={i.hashtags}
                 itineraryActivities={i.activities}
                 itineraryFavs={i.favs}
-                city={city}
             />         
         )}
         </div>

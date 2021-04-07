@@ -64,7 +64,7 @@ const App = () => {
         {!user && <Link style={styles.buttonNav} to='/singin'>Singin</Link>}
         {!user && <Link style={styles.buttonNav} to='/singup'>Singup</Link>}
         {user && <Link style={styles.buttonNav} to='/favourites'>Favourites</Link>}
-        {user && <button style={styles.buttonNav} onClick={handleLogout}>Logout</button>}
+        {user && <Link style={styles.buttonNav} to='/' onClick={handleLogout}>Logout</Link>}
       </div>
       <div style={styles.title}>MYitinerary</div>
         <Switch>
