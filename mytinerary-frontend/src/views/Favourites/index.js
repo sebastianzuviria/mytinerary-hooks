@@ -35,7 +35,6 @@ const Favourites = ({ user }) => {
                         await userServices.unFav(user.id, i.id)
                         getFavs(user.id)
                     } 
-
                     return (
                         <Itinerary
                             key={i.id}
@@ -47,6 +46,7 @@ const Favourites = ({ user }) => {
                             itineraryHashtags={i.hashtags}
                             itineraryActivities={i.activities}
                             itineraryFavs={i.favs}
+                            itineraryComments={i.comments}
                         />   
                     )
                 })}

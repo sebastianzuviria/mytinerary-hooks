@@ -41,16 +41,21 @@ const Itinerary = ({
     const show = display ? { display: ''} : { display: 'none' }
 
     useEffect(() => {
+        if(user){
         const fav = itineraryFavs.find(u => String(u) === String(user.id)) ? true : false
         setIsFav(fav)
+        }
     }, [itineraryFavs, user]) //eslint-disable-line
 
     return (
         <div style={styles.card}>
-            <button onClick={() => {
-                functionFav()
-                setIsFav(!isFav)
-                }}>{isFav ? 'unFav' : 'Fav'}</button> 
+            {user &&
+                <button onClick={() => {
+                    functionFav()
+                    setIsFav(!isFav)
+                    }}>{isFav ? 'unFav' : 'Fav'}
+                </button> 
+            }
             <div>
                 name: {itineraryName}
             </div>

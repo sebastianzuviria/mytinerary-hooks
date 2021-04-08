@@ -1,0 +1,59 @@
+[33mcommit 1b6245dbdd77bbabb85f85ddd2fb50bfda418ebd[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Wed Apr 7 19:53:42 2021 -0300
+
+    Post comment itinerary
+
+[33mcommit 65aac2d519693251a141e09a99b1c7242f77b65b[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Wed Apr 7 13:46:46 2021 -0300
+
+    Favourites view refactored
+
+[33mcommit 4937f40501072c3532e341d8974b246ee26f9ebb[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Tue Apr 6 19:42:56 2021 -0300
+
+    unFav from favourites view
+
+[33mcommit 0339f827b6902a5b519dd8e0a5e5b484aeb56bc5[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Mon Apr 5 23:27:53 2021 -0300
+
+    added carousel of activities and fav itinerary function
+
+[33mcommit c0606f8087eec0eccac8c5ead48ce97d3d059d5f[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Sun Apr 4 19:28:50 2021 -0300
+
+    added views of cities, itineraries, login, user store
+
+[33mcommit b3ff47907303fe020c3b2f62d901baed7a43ce6e[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Sun Apr 4 09:32:31 2021 -0300
+
+    removed git submodules
+
+[33mcommit 77aa936274feba565500c8020c39f0bcbc1ef379[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Sun Apr 4 09:00:20 2021 -0300
+
+    controllers for countries, cities, itineraries and activities
+
+[33mcommit 30c1a2ea3a92e75d4871c756a30d550276317dc8[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Sat Apr 3 13:26:56 2021 -0300
+
+    contries controller routes
+
+[33mcommit 8c9803f53320afb79fe3b24da96d06a7adb9beb1[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Sat Apr 3 12:49:09 2021 -0300
+
+    first structure of frontend
+
+[33mcommit 3e5538aa278ec6747c7bbb87b6a2fd9f05652256[m
+Author: szuviria <szuviria@gmail.com>
+Date:   Sat Apr 3 12:44:15 2021 -0300
+
+    create server and mongoose models

@@ -11,7 +11,14 @@ usersRouter.get('/:id', async (request,response) => {
         .populate({
             path: 'favs',
             populate: {
-                path: 'activities'
+                path: 'comments',
+                populate: 'user'
+            }
+        })
+        .populate({
+            path: 'favs',
+            populate: {
+                path:'activities'
             }
         })
 
