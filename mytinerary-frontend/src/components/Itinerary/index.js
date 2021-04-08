@@ -120,7 +120,6 @@ const Itinerary = ({
             {itineraryComments.length === 0 
             ? <div>no comments</div>
             : itineraryComments.map(c => {
-                console.log(c.user)
                 return(
                 <Comment 
                     key={c.id}

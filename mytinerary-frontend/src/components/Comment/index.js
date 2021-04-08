@@ -28,15 +28,33 @@ const Comment = ({
         dispatch(setUser(user))
     }
 
+    const likedComment = async () => {
+        console.log('like')
+        await commentServices.likedComment(commentId)
+        dispatch(getItinerariesOf(commentItinerary.city.name))
+        const loggedUserJSON = window.localStorage.getItem('loggedMytineraryUser')
+        const user = JSON.parse(loggedUserJSON)
+        dispatch(setUser(user))
+    }
+
+    const dislikedComment = async () => {
+        console.log('dislike')
+        await commentServices.dislikedComment(commentId)
+        dispatch(getItinerariesOf(commentItinerary.city.name))
+        const loggedUserJSON = window.localStorage.getItem('loggedMytineraryUser')
+        const user = JSON.parse(loggedUserJSON)
+        dispatch(setUser(user))
+    }
+
     return (
         <div>
             <div>
-                <div>{commentUser.username}</div>
+                <div>{commentUser.firstName} {commentUser.lastName}</div>
                 <div>{commentContent}</div>
             </div>
             <div style={styles.card}>
-                <div>{commentLikes.length} <button>likes</button></div>
-                <div>{commentDislikes.length} <button>dislikes</button></div>
+                <div>{commentLikes.length} <button onClick={likedComment}>likes</button></div>
+                <div>{commentDislikes.length} <button onClick={dislikedComment}>dislikes</button></div>
                 {user && user.id === commentUser.id && <button onClick={deleteComment}>Delete</button>}
             </div>        
         </div>
