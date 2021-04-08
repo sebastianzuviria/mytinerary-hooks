@@ -31,6 +31,13 @@ itinerariesRouter.get('/:city', async (request, response) => {
                 path: 'user'
             }
         })
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'itinerary',
+                populate: 'city',
+            }
+        })
     
     response.json(itinerariesOf)
 })

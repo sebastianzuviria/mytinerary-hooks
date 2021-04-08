@@ -47,6 +47,7 @@ const Favourites = ({ user }) => {
                             itineraryActivities={i.activities}
                             itineraryFavs={i.favs}
                             itineraryComments={i.comments}
+                            city={i.city.name}
                         />   
                     )
                 })}

@@ -120,13 +120,16 @@ const Itinerary = ({
             {itineraryComments.length === 0 
             ? <div>no comments</div>
             : itineraryComments.map(c => {
+                console.log(c.user)
                 return(
                 <Comment 
                     key={c.id}
+                    commentId={c.id}
                     commentContent={c.content}
                     commentLikes={c.likes}
                     commentDislikes={c.dislikes}
                     commentUser={c.user}
+                    commentItinerary={c.itinerary}
                 />
                 )
             })

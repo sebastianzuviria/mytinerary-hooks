@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getItinerariesOf } from '../../reducers/itineraryReducer'
+import { setUser } from '../../reducers/userReducer'
 import commentServices from '../../services/comments'
 
 const CommentForm = ({ itineraryId, city }) => {
@@ -19,6 +20,9 @@ const CommentForm = ({ itineraryId, city }) => {
         await commentServices.comment(comment)
        
         dispatch(getItinerariesOf(city))
+        const loggedUserJSON = window.localStorage.getItem('loggedMytineraryUser')
+        const user = JSON.parse(loggedUserJSON)
+        dispatch(setUser(user))
         setCommentContent('')
     }
 

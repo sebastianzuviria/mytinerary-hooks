@@ -50,4 +50,30 @@ commentsRouter.post('/', async (request, response) => {
     response.json(savedComment)
 })
 
+commentsRouter.delete('/:id', async (request, response) => {
+    const id = request.params.id
+    const comment = await Comment.findById(id)
+    const itinerary = await Itinerary.findById(comment.itinerary)
+    
+    const token = getTokenFrom(request)
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    const user = await User.findById(decodedToken.id) 
+
+    if (String(comment.user) === String(user._id)) {
+        const deletedComment = await Comment.findByIdAndDelete(id)
+        
+        user.comments = user.comments.filter(c => String(c) !== String(deletedComment._id))
+        itinerary.comments = itinerary.comments.filter(c => String(c) !== String(deletedComment._id))
+        
+        await user.save()
+        await itinerary.save()
+        
+        response.status(204).end()
+    } else {
+        response.status(400).json({ error: 'only comment\'s author can delete it' })
+    }
+
+
+})
+
 module.exports = commentsRouter

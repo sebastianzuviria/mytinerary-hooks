@@ -12,6 +12,19 @@ usersRouter.get('/:id', async (request,response) => {
             path: 'favs',
             populate: {
                 path: 'comments',
+                populate: 'user',
+                populate: {
+                    path: 'itinerary',
+                    populate: {
+                        path: 'city'
+                    }
+                }
+            },
+        })
+        .populate({
+            path:'favs',
+            populate: {
+                path: 'comments',
                 populate: 'user'
             }
         })
@@ -19,6 +32,12 @@ usersRouter.get('/:id', async (request,response) => {
             path: 'favs',
             populate: {
                 path:'activities'
+            }
+        })
+        .populate({
+            path: 'favs',
+            populate: {
+                path: 'city'
             }
         })
 

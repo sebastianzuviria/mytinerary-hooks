@@ -1,4 +1,7 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import commentServices from '../../services/comments'
+import { getItinerariesOf } from '../../reducers/itineraryReducer' 
+import { setUser } from '../../reducers/userReducer'
 
 const styles = {
     card: {
@@ -7,15 +10,22 @@ const styles = {
 }
 
 const Comment = ({
+    commentId,
     commentContent,
     commentLikes,
     commentDislikes,
-    commentUser
+    commentUser,
+    commentItinerary
 }) => {
     const user = useSelector(state => state.user)
-    
-    const deleteComment = () => {
-        
+    const dispatch = useDispatch()
+
+    const deleteComment = async () => {
+        await commentServices.deleteComment(commentId)
+        dispatch(getItinerariesOf(commentItinerary.city.name))
+        const loggedUserJSON = window.localStorage.getItem('loggedMytineraryUser')
+        const user = JSON.parse(loggedUserJSON)
+        dispatch(setUser(user))
     }
 
     return (
