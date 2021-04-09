@@ -43,6 +43,7 @@ const Favourites = ({ user }) => {
                             itineraryName={i.name}
                             itineraryRating={i.rating}
                             itineraryPrice={i.price}
+                            itineraryImage={i.imgUrl}
                             itineraryHashtags={i.hashtags}
                             itineraryActivities={i.activities}
                             itineraryFavs={i.favs}

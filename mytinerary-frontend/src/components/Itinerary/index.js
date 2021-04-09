@@ -18,6 +18,9 @@ const styles = {
     hashtag: {
         marginRight: 5,
         marginLeft: 5
+    },
+    img: {
+        width: 400
     }
 }
 
@@ -26,6 +29,7 @@ const Itinerary = ({
     itineraryName,
     itineraryRating,
     itineraryPrice,
+    itineraryImage,
     itineraryHashtags,
     itineraryActivities,
     itineraryFavs,
@@ -58,6 +62,9 @@ const Itinerary = ({
             }
             <div>
                 name: {itineraryName}
+            </div>
+            <div>
+                <img style={styles.img} src={itineraryImage} alt="itinerary"/>
             </div>
             <div>
                 rating: {itineraryRating}
@@ -101,6 +108,7 @@ const Itinerary = ({
                                     activityDescription={arr[index].description}
                                     activityDuration={arr[index].duration}
                                     activityPrice={arr[index].price}
+                                    activityImage={arr[index].imgUrl}
                                 />
                                 <div style={{ display: 'flex' }}>
                                     <button onClick={handleCarouselBack}>{'<'}</button>
@@ -133,12 +141,14 @@ const Itinerary = ({
                 )
             })
             }
-            <div>
-                <CommentForm
-                    itineraryId={itineraryId}
-                    city={city}
-                />
-            </div>
+            {user &&
+                <div>
+                    <CommentForm
+                        itineraryId={itineraryId}
+                        city={city}
+                    />
+                </div>
+            }
         </div>
     )
 }

@@ -14,6 +14,7 @@ const Activity = ({
     activityDescription,
     activityDuration,
     activityPrice,
+    activityImage
 }) => {
     
     return (

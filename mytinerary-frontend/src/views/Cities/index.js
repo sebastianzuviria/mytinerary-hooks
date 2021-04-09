@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { getCities } from '../../reducers/cityReducer'
+import { clearItinerariesOf } from '../../reducers/itineraryReducer'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -14,6 +15,7 @@ const Cities = () => {
     
     useEffect(() => {
        dispatch(getCities())
+       dispatch(clearItinerariesOf())
     }, [dispatch])
 
     const cities = useSelector(state => state.cities)
