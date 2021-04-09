@@ -6,7 +6,7 @@ const countrySchema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    flag: {
+    flagImgUrl: {
         type: String
     },
     cities: [

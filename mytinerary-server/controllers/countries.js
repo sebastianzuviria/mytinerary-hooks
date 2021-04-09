@@ -13,7 +13,7 @@ countriesRouter.post('/', async (request, response) => {
 
     const country = new Country({
         name: body.name,
-        flag: body.flag,
+        flagImgUrl: body.flagImgUrl,
         cities: []
     })
 
@@ -39,7 +39,7 @@ countriesRouter.put('/:id', async (request, response) => {
 
     const newCountry = {
         name: body.name,
-        flag: body.flag,
+        flagImgUrl: body.flagImgUrl,
         cities: country.cities
     }
 

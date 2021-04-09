@@ -11,7 +11,7 @@ const citySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Country'
     },
-    img: {
+    imgUrl: {
         type: String,
     },
     url: {

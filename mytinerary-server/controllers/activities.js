@@ -30,7 +30,7 @@ activitiesRouter.post('/', async (request, response) => {
     const activity = new Activity({
         name: body.name,
         address: body.address,
-        img: body.img,
+        imgUrl: body.imgUrl,
         duration: body.duration,
         price: body.price,
         description: body.description,

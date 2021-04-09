@@ -8,14 +8,13 @@ const itinerarySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'City'
     },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User'
-    // },
+    imgUrl: {
+        type: String,
+    },
     user: {
         type: String,
     },
-    userPhotos: [
+    userPhotosUrls: [
         {
             type: String,
         }

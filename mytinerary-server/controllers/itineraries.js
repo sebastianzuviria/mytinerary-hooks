@@ -53,8 +53,9 @@ itinerariesRouter.post('/', async (request, response) => {
     const itinerary = new Itinerary({
         name: body.name,
         city: city._id,
-        user: '',
-        userPhotos: body.userPhotos,
+        user: body.user,
+        imgUrl: body.imgUrl,
+        userPhotosUrls: body.userPhotosUrls,
         rating: body.rating,
         duration: body.duration,
         price: body.price,

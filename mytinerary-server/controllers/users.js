@@ -52,10 +52,14 @@ usersRouter.post('/', async (request, response) => {
 
     const user = new User({
         username: body.username,
-        name: body.name,
+        email: body.email,
+        firstName: body.firstName,
+        lastName: body.lastName,
+        imgUrl: body.imgUrl,
         passwordHash,
         favs: [],
         likedComments: [],
+        dislikedComments: []
     })
 
     const savedUser = await user.save()

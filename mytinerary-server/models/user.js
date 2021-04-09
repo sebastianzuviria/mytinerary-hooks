@@ -18,6 +18,9 @@ const userSchema = new mongoose.Schema({
     lastName: {
         type: String,
     },
+    imgUrl: {
+        type:String
+    },
     passwordHash: {
         type: String,
         required: true

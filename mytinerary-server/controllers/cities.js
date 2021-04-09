@@ -27,7 +27,7 @@ citiesRouter.post('/', async (request, response) => {
         const city = new City({
             name: body.name,
             country: country._id,
-            img: body.img,
+            imgUrl: body.imgUrl,
             url: body.url,
         })
 
@@ -38,7 +38,7 @@ citiesRouter.post('/', async (request, response) => {
     } else {
         const country = new Country({
             name: body.country,
-            flag: '',
+            flagImgUrl: '',
             cities: []
         })
         
@@ -50,7 +50,7 @@ citiesRouter.post('/', async (request, response) => {
         const city = new City({
             name: body.name,
             country: savedCountry._id,
-            img: body.img,
+            imgUrl: body.imgUrl,
             url: body.url,
         })
         
@@ -77,14 +77,14 @@ citiesRouter.put('/:id', async (request, response) => {
     const body = request.body
     const city = await City.findById(request.params.id)
 
-    const newCity = new City({
+    const modifiedCity = new City({
         name: body.name,
         country: city.country,
-        img: body.img,
+        imgUrl: body.imgUrl,
         url: body.url,
     })
 
-    const updatedCity = await City.findByIdAndUpdate(request.params.id, newCity, { new: true })
+    const updatedCity = await City.findByIdAndUpdate(request.params.id, modifiedCity, { new: true })
     response.json(updatedCity)
 })
 
