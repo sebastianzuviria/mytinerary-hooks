@@ -235,8 +235,8 @@
 
   .Beach {
     position: absolute;
-    top: 5vw;
-    left: 0vw;
+    top: 7vw;
+    left: 5vw;
     max-width: 8vw;
     margin: 0 auto;
 
@@ -254,7 +254,7 @@
 
   .Plane {
     position: absolute;
-    top: 8vw;
+    top: 10vw;
     left: 60vw;
     max-width: 15vw;
     margin: 0 auto;
@@ -270,8 +270,8 @@
 
   .Cutlery {
     position: absolute;
-    top: 35vw;
-    left: -75vw;
+    top: 40vw;
+    left: -30vw;
     max-width: 6vw;
     margin: 0 auto;
 
@@ -279,8 +279,8 @@
 
   .Beach {
     position: absolute;
-    top: 4vw;
-    left: 35vw;
+    top: 6vw;
+    left: 0vw;
     max-width: 5vw;
     margin: 0 auto;
 

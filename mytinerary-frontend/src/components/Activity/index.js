@@ -13,10 +13,10 @@ const Activity = ({
             <div className="ActivityHeader">
             <div className="ActivityContent">
                 <div className="ActivityName">{activityName}</div>
-                <div className="Description"><i className="fas fa-info-circle"></i> {activityDescription}</div>
+                <div className="Description"><i className="fas fa-info-circle DescriptionIcon"></i> {activityDescription}</div>
                 <div className="Details">
                     <div><i className="fas fa-clock"></i> {activityDuration}</div>
-                    <div><i className="fas fa-dollar-sign"></i> {activityPrice}</div>
+                    <div><i className="fas fa-dollar-sign DolarIcon"></i> {activityPrice}</div>
                 </div>
             </div>
             <div>

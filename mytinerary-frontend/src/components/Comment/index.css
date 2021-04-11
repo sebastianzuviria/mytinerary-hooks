@@ -11,15 +11,21 @@
     align-items: flex-start;
 }
 
+.CommentHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
 .CommentBox {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     flex-grow: 1;
     border-radius: 12px;
     text-align: left;
     padding: 8px;
+    background-color: #f2f2f2;
+    margin-right: 10px;
 }
 
 .Comment {

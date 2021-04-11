@@ -51,14 +51,14 @@ const Comment = ({
     const dispatch = useDispatch()
     
     useEffect(() => {
+        setNumberLikes(commentLikes.length)
+        setNumberDislikes(commentDislikes.length)
         if(user) {
             const isLiked = commentLikes.find(l => String(l) === user.id)
             const isDisliked = commentDislikes.find(d => String(d) === user.id)
-            setNumberLikes(commentLikes.length)
-            setNumberDislikes(commentDislikes.length)
             isLiked ? setButtonLike('liked') : setButtonLike('like')
             isDisliked ? setButtonDislike('disliked') : setButtonDislike('dislike')
-        }
+        } 
     }, [commentDislikes, commentLikes]) //eslint-disable-line
 
 
@@ -117,7 +117,10 @@ const Comment = ({
             </div>
             <div className="CommentBox"> 
                 <div className="Comment">
-                    <div className="UserName">{commentUser.firstName} {commentUser.lastName}</div>
+                    <div className="CommentHeader">
+                        <div className="UserName">{commentUser.firstName} {commentUser.lastName}</div>
+                        {user && user.id === commentUser.id && <div className="Delete" onClick={deleteComment}><i className="fas fa-trash"></i></div>}
+                    </div>
                     <div className="CommentText">{commentContent}</div>
                 </div>
             <div className="ButtonBox" style={styles.buttonBox}>
@@ -125,17 +128,16 @@ const Comment = ({
                     {numberLikes} 
                     {user
                     ? <div onClick={likedComment}>{buttonLike === 'like' ? <i className="far fa-thumbs-up Like"></i> : <i className="fas fa-thumbs-up Liked"></i>}</div>
-                    : <div disabled><i class="far fa-thumbs-up"></i></div>
+                    : <div disabled><i className="far fa-thumbs-up"></i></div>
                     }
                 </div>
                 <div className="Dislikes">
                     {numberDislikes} 
                     {user
                     ? <div onClick={dislikedComment}>{buttonDislike === 'dislike' ? <i className="far fa-thumbs-down Dislike"></i> : <i className="fas fa-thumbs-down Disliked"></i> }</div>
-                    : <div disabled><i class="far fa-thumbs-down"></i></div>
+                    : <div disabled><i className="far fa-thumbs-down"></i></div>
                     }
                 </div>
-                {user && user.id === commentUser.id && <div className="Delete" onClick={deleteComment}><i className="fas fa-trash"></i></div>}
             </div>
             </div>        
         </div>

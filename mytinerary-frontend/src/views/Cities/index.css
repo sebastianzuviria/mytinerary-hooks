@@ -15,7 +15,7 @@ h3 {
     align-items: center;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 865px) {
     .CitiesContainer {
         width: 80%;
         display: grid;

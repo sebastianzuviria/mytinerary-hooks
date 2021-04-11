@@ -7,8 +7,8 @@ a {
     width: 50vw;
     margin: 20px;
     border-radius: 7vw;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     text-decoration: none;
+    border: 1px solid #e1e1e1
 }
 
 .CityImg {
@@ -22,6 +22,7 @@ a {
 
 .CityName {
     font-size: 4vw;
+    margin-top: 1vw;
 }
 
 .FlagContainer {
@@ -49,7 +50,6 @@ a {
         height: 300px;
         margin: 20px;
         border-radius: 25px;
-        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
         text-decoration: none;
         justify-self: center;
     }
@@ -65,6 +65,7 @@ a {
     
     .CityName {
         font-size: 18px;
+        margin-top: 8px;
     }
     
     .FlagContainer {

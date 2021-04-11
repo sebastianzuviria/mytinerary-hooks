@@ -1,5 +1,5 @@
 h3 {
-    font-size: 28px;
+    font-size: 20px;
 }
 
 .Itineraries {
@@ -9,4 +9,10 @@ h3 {
     align-items: center;
     text-align: center;
     z-index: 0;
+}
+
+@media (min-width: 560px) {
+    h3 {
+        font-size: 28px;
+    }
 }

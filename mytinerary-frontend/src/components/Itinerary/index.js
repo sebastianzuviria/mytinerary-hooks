@@ -35,8 +35,10 @@ const Itinerary = ({
     return (
         <div className="CardItinerary">
             <div className="ContainerItinerary">
-                <div className="Img" style={{ backgroundImage: `url(${itineraryImage})`}} />
-                <div className="Info">
+                <div className="ItineraryHeader">
+                    <div className="ItineraryName">
+                        {itineraryName}
+                    </div>
                     <div className="BookmarkBox">
                         {user &&
                             <div className="Bookmark" onClick={() => {
@@ -46,9 +48,10 @@ const Itinerary = ({
                             </div> 
                         }
                     </div>
-                    <div className="ItineraryName">
-                        {itineraryName}
-                    </div>
+                </div>
+                <div className="Img" style={{ backgroundImage: `url(${itineraryImage})`}} />
+                <div className="Info">
+                   
                     <div>
                         <i className="fas fa-star Star"></i> {itineraryRating}
                     </div>
@@ -114,18 +117,18 @@ const Itinerary = ({
             }
             <div className="CommentTitle">Comments</div>
             {itineraryComments.length === 0 
-            ? <div>no comments</div>
+            ? <div className="CommentTitle">No comments</div>
             : itineraryComments.map(c => {
                 return(
-                <Comment 
-                    key={c.id}
-                    commentId={c.id}
-                    commentContent={c.content}
-                    commentLikes={c.likes}
-                    commentDislikes={c.dislikes}
-                    commentUser={c.user}
-                    commentItinerary={c.itinerary}
-                />
+                    <Comment 
+                        key={c.id}
+                        commentId={c.id}
+                        commentContent={c.content}
+                        commentLikes={c.likes}
+                        commentDislikes={c.dislikes}
+                        commentUser={c.user}
+                        commentItinerary={c.itinerary}
+                    />
                 )
             })
             }
@@ -137,8 +140,6 @@ const Itinerary = ({
                     />
                 </div>
             }
-            <hr></hr>      
-
         </div>
     )
 }

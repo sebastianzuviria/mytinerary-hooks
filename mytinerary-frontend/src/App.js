@@ -39,10 +39,10 @@ const App = () => {
       <NavBar />
       <div>
         <Switch>
-          <Route path='/singup'>
+          <Route path='/signup'>
             <Signup />
           </Route>
-          <Route path='/singin'>
+          <Route path='/signin'>
             <Signin />
           </Route>
           <Route path='/cities'>

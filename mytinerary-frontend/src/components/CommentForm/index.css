@@ -46,7 +46,7 @@
 }
 
 .Disabled {
-    background-color: rgb(156, 156, 156);
+    background-color: #c2c2c2;
     cursor:inherit
 }
 
@@ -68,5 +68,6 @@
         width: 100px;
         height: 32px;
         font-size: 12px;
+        margin-right: 10px;
     }
 }

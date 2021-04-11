@@ -7,7 +7,7 @@ import itineraryServices from '../../services/itineraries'
 import commentServices from '../../services/comments'
 
 const Signin = () => {
-    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const dispatch = useDispatch()
     const history = useHistory()
@@ -17,7 +17,7 @@ const Signin = () => {
         
         try {
             const user = await loginServices.login({
-                username, password
+                email, password
             })
             window.localStorage.setItem(
                 'loggedMytineraryUser', JSON.stringify(user)
@@ -35,14 +35,14 @@ const Signin = () => {
         <div>
             <div>SignIn</div>
             <form onSubmit={handleLogin}>
-                <div>username
+                <div>Email
                     <input 
-                        type='text'
-                        value={username}
-                        onChange={({ target }) => setUsername(target.value)}
+                        type='email'
+                        value={email}
+                        onChange={({ target }) => setEmail(target.value)}
                     />
                 </div>
-                <div>password
+                <div>Password
                     <input 
                         type='password'
                         value={password}

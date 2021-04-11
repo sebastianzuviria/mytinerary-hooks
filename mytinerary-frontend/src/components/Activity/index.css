@@ -33,6 +33,14 @@
     font-size: 8px;
 }
 
+.DescriptionIcon {
+    color:rgb(20, 123, 219)
+}
+
+.DolarIcon {
+    color: green
+}
+
 .ActivityContent {
     padding: 10px;
 }
