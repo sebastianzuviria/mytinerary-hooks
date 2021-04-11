@@ -4,7 +4,7 @@ const Country = require('../models/country')
 
 citiesRouter.get('/', async (request, response) => {
     const cities = await City
-        .find({}).populate('country', { name: 1, flag: 1, id: 1 })
+        .find({}).populate('country', { name: 1, flagImgUrl: 1, id: 1 })
 
     response.json(cities)    
 })

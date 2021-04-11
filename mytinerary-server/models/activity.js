@@ -7,7 +7,7 @@ const activitySchema = new mongoose.Schema({
     address: {
         type: String,
     },
-    img: {
+    imgUrl: {
         type: String,
     },
     duration: {

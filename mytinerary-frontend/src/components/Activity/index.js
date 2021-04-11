@@ -1,12 +1,4 @@
-const styles = {
-    card: {
-        margin: 5,
-        borderStyle: 'solid',
-        borderColor: 'black',
-        borderWeigth: 2,
-        padding: 5
-    }
-}
+import './index.css'
 
 const Activity = ({
     activityName,
@@ -16,14 +8,24 @@ const Activity = ({
     activityPrice,
     activityImage
 }) => {
-    
     return (
-        <div style={styles.card}>
-            <div>{activityName}</div>
-            <div>Address: {activityAddress}</div>
-            <div>Description: {activityDescription}</div>
-            <div>Duration: {activityDuration}</div>
-            <div>Price: {activityPrice}</div>
+        <div className="CardActivity">
+            <div className="ActivityHeader">
+            <div className="ActivityContent">
+                <div className="ActivityName">{activityName}</div>
+                <div className="Description"><i className="fas fa-info-circle"></i> {activityDescription}</div>
+                <div className="Details">
+                    <div><i className="fas fa-clock"></i> {activityDuration}</div>
+                    <div><i className="fas fa-dollar-sign"></i> {activityPrice}</div>
+                </div>
+            </div>
+            <div>
+                <div className="ActivityImage" style={{ backgroundImage: `url(${activityImage})`}}/>
+            </div>
+            </div>
+            <div>
+            <div className="Address"><i className="fas fa-map-marked-alt"></i> {activityAddress}</div>
+            </div>
         </div>
     )
 }

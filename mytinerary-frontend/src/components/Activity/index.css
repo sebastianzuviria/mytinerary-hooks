@@ -1,0 +1,101 @@
+.CardActivity {
+    border-radius: 5vw;
+    width: 300px;
+    margin-top: -5px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 1px solid #e1e1e1;
+    align-items: center;
+}
+
+.ActivityHeader {
+    display: flex;
+}
+
+.ActivityImage {
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    border-top-right-radius: 15px;
+    /* border-bottom-right-radius: 15px; */
+    margin-bottom: 10px;
+}
+
+.ActivityName {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.Description {
+    font-size: 8px;
+}
+
+.ActivityContent {
+    padding: 10px;
+}
+
+.Address {
+    margin-bottom: 10px;
+}
+
+.Details {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+@media (min-width: 560px) {
+    .CardActivity {
+        border-radius: 20px;
+        width: 500px;
+        margin-top: -5px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+        border: 1px solid #e1e1e1;
+        align-items: center;
+    }
+    
+    .ActivityHeader {
+        display: flex;
+    }
+    
+    .ActivityImage {
+        width: 200px;
+        height: 100px;
+        background-position: center;
+        background-size: cover;
+        border-top-right-radius: 15px;
+        /* border-bottom-right-radius: 15px; */
+        margin-bottom: 10px;
+    }
+    
+    .ActivityName {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    
+    .Description {
+        font-size: 12px;
+    }
+    
+    .ActivityContent {
+        padding: 10px;
+    }
+    
+    .Address {
+        margin-bottom: 10px;
+    }
+    
+    .Details {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    } 
+}

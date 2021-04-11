@@ -1,3 +1,4 @@
+import './index.css'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getItinerariesOf } from '../../reducers/itineraryReducer'
@@ -18,27 +19,33 @@ const Itineraries = ({ match }) => {
         dispatch(getItinerariesOf(city))
     }
 
+    const capitalizeString = (string) => {
+        return string.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))
+    }
+
     return (
-        <div>
-        <div>Itineraries of {city}</div>
-        {itineraries.map(i => { 
-            return (
-            <Itinerary
-                key={i.id}
-                functionFav={handleFav}
-                itineraryId={i.id} 
-                itineraryName={i.name}
-                itineraryRating={i.rating}
-                itineraryPrice={i.price}
-                itineraryImage={i.imgUrl}
-                itineraryHashtags={i.hashtags}
-                itineraryActivities={i.activities}
-                itineraryFavs={i.favs}
-                itineraryComments={i.comments}
-                city={city}
-            />  
-            )}       
-        )}
+        <div className="Itineraries">
+            <h3>Itineraries of {capitalizeString(city)}</h3>
+            <div>
+                {itineraries.map(i => { 
+                    return (
+                    <Itinerary
+                        key={i.id}
+                        functionFav={handleFav}
+                        itineraryId={i.id} 
+                        itineraryName={i.name}
+                        itineraryRating={i.rating}
+                        itineraryPrice={i.price}
+                        itineraryImage={i.imgUrl}
+                        itineraryHashtags={i.hashtags}
+                        itineraryActivities={i.activities}
+                        itineraryFavs={i.favs}
+                        itineraryComments={i.comments}
+                        city={city}
+                    />  
+                    )}       
+                )}
+            </div>
         </div>
     )
 }

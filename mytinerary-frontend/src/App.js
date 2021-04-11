@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from './reducers/userReducer'
-import './App.css';
+import './App.css'
 import {
   BrowserRouter as Router,
-  Switch, Route, Link
+  Switch, Route
 } from 'react-router-dom'
 import Home from './views/Home/index'
 import About from './views/About/index'
@@ -14,30 +14,10 @@ import Signup from './views/Signup/index'
 import Itineraries from './views/Itineraries/index'
 import Favourites from './views/Favourites/index'
 import itineraryServices from './services/itineraries'
-import commentServices from './services/comments';
-
+import commentServices from './services/comments'
+import NavBar from './components/NavBar/index'
 
 const App = () => {
-  const styles = {
-    navBar: {
-      backgroundColor: 'blue',
-      height: 50,
-      alignItems: 'center',
-      display: 'flex'
-    },
-    buttonNav: {
-      padding: 5,
-      margin: 5,
-      backgroundColor: 'grey',
-      textDecoration: 'none',
-      color: 'white'
-    },
-    title: {
-      margin: 20,
-      fontSize: 30
-    }
-  }
-
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
 
@@ -50,25 +30,14 @@ const App = () => {
       dispatch(setUser(user))
     }
   }, []) //eslint-disable-line
-
-  const handleLogout = () => {
-    window.localStorage.clear()
-    dispatch(setUser(null))
-  }
   
 
   return (
     <Router>
-      <div style={styles.navBar}>
-        <Link style={styles.buttonNav} to='/'>Home</Link>
-        <Link style={styles.buttonNav} to='/about'>About</Link>
-        <Link style={styles.buttonNav} to='/cities'>Cities</Link>
-        {!user && <Link style={styles.buttonNav} to='/singin'>Singin</Link>}
-        {!user && <Link style={styles.buttonNav} to='/singup'>Singup</Link>}
-        {user && <Link style={styles.buttonNav} to='/favourites'>Favourites</Link>}
-        {user && <Link style={styles.buttonNav} to='/' onClick={handleLogout}>Logout</Link>}
-      </div>
-      <div style={styles.title}>MYitinerary</div>
+       
+      <div className="App">
+      <NavBar />
+      <div>
         <Switch>
           <Route path='/singup'>
             <Signup />
@@ -89,7 +58,9 @@ const App = () => {
           <Route path='/'>
             <Home />
           </Route>
-        </Switch>  
+        </Switch>
+        </div>
+        </div>   
     </Router>
   )
 }

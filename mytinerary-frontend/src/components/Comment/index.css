@@ -1,0 +1,105 @@
+.ContainerComment {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 12px;
+    font-size: 11px;
+}
+
+.UserBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.CommentBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    flex-grow: 1;
+    border-radius: 12px;
+    text-align: left;
+    padding: 8px;
+}
+
+.Comment {
+    padding: 5px;
+}
+
+.UserImage {
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    background-size: cover;
+    margin: 10px;
+}
+
+.UserName {
+    font-weight: bold;
+}
+
+.CommentText {
+    padding: 8px;
+}
+
+.ButtonBox {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Likes {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 12px;
+}
+
+.Disikes {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.Like {
+    cursor: pointer;
+}
+
+.Liked {
+    color: rgb(47, 126, 243);
+    cursor: pointer;
+}
+
+.Dislike {
+    cursor: pointer;
+}
+
+.Disliked {
+    color: red;
+    cursor: pointer;
+}
+
+.Delete {
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+@media (min-width: 560px) {
+    .ContainerComment {
+        font-size: 14px;
+    }
+    .UserImage {
+        width: 35px;
+        height: 35px;
+    }
+    .CommentBox {
+        display: block;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .ButtonBox {
+        display: block;
+        justify-content: flex-end;
+    }    
+}

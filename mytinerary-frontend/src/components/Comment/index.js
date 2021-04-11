@@ -1,3 +1,4 @@
+import './index.css'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import commentServices from '../../services/comments'
@@ -110,30 +111,32 @@ const Comment = ({
     }
 
     return (
-        <div style={styles.container}>
-            <div>
-                <div style={styles.user}>
-                    <div><img style={styles.userImg} src={commentUser.imgUrl} alt='user img'/></div>
-                    <div>{commentUser.firstName} {commentUser.lastName}</div>
-                </div>
-                <div style={styles.commentBox}>{commentContent}</div>
+        <div className="ContainerComment">
+            <div className="UserBox" style={styles.user}>
+                    <div className="UserImage" style={{backgroundImage: `url(${commentUser.imgUrl})`}} />
             </div>
-            <div style={styles.buttonBox}>
-                <div>
+            <div className="CommentBox"> 
+                <div className="Comment">
+                    <div className="UserName">{commentUser.firstName} {commentUser.lastName}</div>
+                    <div className="CommentText">{commentContent}</div>
+                </div>
+            <div className="ButtonBox" style={styles.buttonBox}>
+                <div className="Likes">
                     {numberLikes} 
                     {user
-                    ? <button style={styles.button} onClick={likedComment}>{buttonLike}</button>
-                    : <button style={styles.button} disabled>like</button>
+                    ? <div onClick={likedComment}>{buttonLike === 'like' ? <i className="far fa-thumbs-up Like"></i> : <i className="fas fa-thumbs-up Liked"></i>}</div>
+                    : <div disabled><i class="far fa-thumbs-up"></i></div>
                     }
                 </div>
-                <div>
+                <div className="Dislikes">
                     {numberDislikes} 
                     {user
-                    ? <button style={styles.button} onClick={dislikedComment}>{buttonDislike}</button>
-                    : <button style={styles.button} disabled>dislike</button>
+                    ? <div onClick={dislikedComment}>{buttonDislike === 'dislike' ? <i className="far fa-thumbs-down Dislike"></i> : <i className="fas fa-thumbs-down Disliked"></i> }</div>
+                    : <div disabled><i class="far fa-thumbs-down"></i></div>
                     }
                 </div>
-                {user && user.id === commentUser.id && <button style={styles.button} onClick={deleteComment}>Delete</button>}
+                {user && user.id === commentUser.id && <div className="Delete" onClick={deleteComment}><i className="fas fa-trash"></i></div>}
+            </div>
             </div>        
         </div>
     )

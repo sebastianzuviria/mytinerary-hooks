@@ -1,28 +1,9 @@
+import './index.css'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Activity from '../Activity/index'
 import Comment from '../Comment/index'
 import CommentForm from '../CommentForm/index'
-
-const styles = {
-    card: {
-        margin: 10,
-        borderStyle: 'solid',
-        borderWeigth: 2,
-        borderColor: 'black',
-        padding: 10
-    },
-    hashtags: {
-        display: 'flex'
-    },
-    hashtag: {
-        marginRight: 5,
-        marginLeft: 5
-    },
-    img: {
-        width: 400
-    }
-}
 
 const Itinerary = ({
     itineraryId, 
@@ -52,32 +33,36 @@ const Itinerary = ({
     }, [itineraryFavs, user]) //eslint-disable-line
 
     return (
-        <div style={styles.card}>
-            {user &&
-                <button onClick={() => {
-                    functionFav()
-                    setIsFav(!isFav)
-                    }}>{isFav ? 'unFav' : 'Fav'}
-                </button> 
-            }
-            <div>
-                name: {itineraryName}
+        <div className="CardItinerary">
+            <div className="ContainerItinerary">
+                <div className="Img" style={{ backgroundImage: `url(${itineraryImage})`}} />
+                <div className="Info">
+                    <div className="BookmarkBox">
+                        {user &&
+                            <div className="Bookmark" onClick={() => {
+                                functionFav()
+                                setIsFav(!isFav)
+                                }}>{isFav ? <i className="fas fa-bookmark"></i> : <i className="far fa-bookmark"></i>}
+                            </div> 
+                        }
+                    </div>
+                    <div className="ItineraryName">
+                        {itineraryName}
+                    </div>
+                    <div>
+                        <i className="fas fa-star Star"></i> {itineraryRating}
+                    </div>
+                    <div>
+                        <i className="fas fa-money-bill-wave Money"></i> {itineraryPrice}
+                    </div>
+                    <div className="Hashtags">
+                        {itineraryHashtags.map(h => 
+                            <div key={h}>{h}</div>
+                        )}
+                    </div>
+                    <button className="ButtonActivities" onClick={() => setDisplay(!display)} >Activities</button>
+                </div>
             </div>
-            <div>
-                <img style={styles.img} src={itineraryImage} alt="itinerary"/>
-            </div>
-            <div>
-                rating: {itineraryRating}
-            </div>
-            <div>
-                price: {itineraryPrice}
-            </div>
-            <div style={styles.hashtags}>
-                hashtags: {itineraryHashtags.map(h => 
-                    <div key={h} style={styles.hashtag}>{h}</div>
-                )}
-            </div>
-            <button onClick={() => setDisplay(!display)} >Activities</button>
             {itineraryActivities.length === 0 
             ? <div>No activities to show</div>
             : <div style={show}>
@@ -99,25 +84,27 @@ const Itinerary = ({
                         }
 
                         return(
-                            <div>
-                                <Activity 
-                                    key={arr[index].id}
-                                    activityId={arr[index].id}
-                                    activityName={arr[index].name}
-                                    activityAddress={arr[index].address}
-                                    activityDescription={arr[index].description}
-                                    activityDuration={arr[index].duration}
-                                    activityPrice={arr[index].price}
-                                    activityImage={arr[index].imgUrl}
-                                />
+                            <div className="Activities">
+                                <div className="SliderContent">
+                                    <div onClick={handleCarouselBack}><i className="fas fa-chevron-left SliderArrow"></i></div>
+                                    <Activity 
+                                        key={arr[index].id}
+                                        activityId={arr[index].id}
+                                        activityName={arr[index].name}
+                                        activityAddress={arr[index].address}
+                                        activityDescription={arr[index].description}
+                                        activityDuration={arr[index].duration}
+                                        activityPrice={arr[index].price}
+                                        activityImage={arr[index].imgUrl}
+                                    />
+                                    <div className="SliderArrow" onClick={handleCarouselNext}><i className="fas fa-chevron-right SliderArrow"></i></div>
+                                </div>
                                 <div style={{ display: 'flex' }}>
-                                    <button onClick={handleCarouselBack}>{'<'}</button>
                                     { arr.length === 0 
                                     ? <div>There is not activity regitered</div>
-                                    : <div>{index + 1} of {arr.length} {index === 1 ? 'activity' : 'activities'}</div>
+                                    : <div className="SliderFooter">{index + 1} of {arr.length} {index === 1 ? 'activity' : 'activities'}</div>
                                     }
-                                    <button onClick={handleCarouselNext}>{'>'}</button>
-                                </div>      
+                                </div>
                             </div>
                         )
                         
@@ -125,6 +112,7 @@ const Itinerary = ({
                 }
              </div>
             }
+            <div className="CommentTitle">Comments</div>
             {itineraryComments.length === 0 
             ? <div>no comments</div>
             : itineraryComments.map(c => {
@@ -149,6 +137,8 @@ const Itinerary = ({
                     />
                 </div>
             }
+            <hr></hr>      
+
         </div>
     )
 }
