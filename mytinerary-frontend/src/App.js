@@ -30,40 +30,38 @@ const App = () => {
       dispatch(setUser(user))
     }
   }, []) //eslint-disable-line
-  
 
   return (
     <Router>
-       
-      <div className="App">
-      <NavBar />
-      <div>
-        <Switch>
-          {/* <Route path='/signup'>
+
+      <div className='App'>
+        <NavBar />
+        <div>
+          <Switch>
+            {/* <Route path='/signup'>
             <Signup />
           </Route>
           <Route path='/signin'>
             <Signin />
           </Route> */}
-          <Route path='/cities'>
-            <Cities />
-          </Route>
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route path='/favourites'>
-            <Favourites user={user}/>
-          </Route>
-          <Route path='/itineraries/:city' component={Itineraries}/>
-          <Route path='/'>
-            <Home />
-          </Route>
-        </Switch>
+            <Route path='/cities'>
+              <Cities />
+            </Route>
+            <Route path='/about'>
+              <About />
+            </Route>
+            <Route path='/favourites'>
+              <Favourites user={user} />
+            </Route>
+            <Route path='/itineraries/:city' component={Itineraries} />
+            <Route path='/'>
+              <Home />
+            </Route>
+          </Switch>
         </div>
-        </div>   
+      </div>
     </Router>
   )
 }
 
-
-export default App;
+export default App

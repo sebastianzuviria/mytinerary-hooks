@@ -8,29 +8,29 @@ const setToken = newToken => {
 }
 
 const getAll = async () => {
-    const response = await axios.get(baseUrl)
-    return response.data
+  const response = await axios.get(baseUrl)
+  return response.data
 }
 
 const getItinerariesOf = async (city) => {
-    const response = await axios.get(`${baseUrl}/${city}`)
-    return response.data
+  const response = await axios.get(`${baseUrl}/${city}`)
+  return response.data
 }
 
 const favItinerary = async city => {
-    const config = {
-        headers: { Authorization: token }
-    }
+  const config = {
+    headers: { Authorization: token }
+  }
 
-    const response = await axios.put(`${baseUrl}/${city}`, null, config)
-    return response.data
+  const response = await axios.put(`${baseUrl}/${city}`, null, config)
+  return response.data
 }
 
 const itineraryServices = {
-    getAll,
-    getItinerariesOf,
-    favItinerary,
-    setToken
+  getAll,
+  getItinerariesOf,
+  favItinerary,
+  setToken
 }
 
 export default itineraryServices

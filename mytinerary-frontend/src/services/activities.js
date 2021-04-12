@@ -8,19 +8,19 @@ const setToken = newToken => {
 }
 
 const favActivity = async id => {
-    console.log(token)
-    const config = {
-        headers: { Authorization: token }
-    }
+  console.log(token)
+  const config = {
+    headers: { Authorization: token }
+  }
 
-    console.log(config)
-    const response = await axios.put(`${baseUrl}/${id}`, null, config)
-    return response.data
+  console.log(config)
+  const response = await axios.put(`${baseUrl}/${id}`, null, config)
+  return response.data
 }
 
 const activityServices = {
-    setToken,
-    favActivity
+  setToken,
+  favActivity
 }
 
 export default activityServices

@@ -14,25 +14,25 @@ const commentsRouter = require('./controllers/comments')
 const MONGODB_URI = 'mongodb+srv://szuviria:321321321@mytinerary-app.aiu01.mongodb.net/mytinerary?retryWrites=true&w=majority'
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
-    .then( result => {
-        console.log('connected to MongoDB')
-    })
-    .catch((error) => {
-        console.log('error connecting to MongoDB: ', error.message )
-    })
+  .then(result => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connecting to MongoDB: ', error.message)
+  })
 
 app.use(cors())
 app.use(express.json())
 app.use('/**', (request, response, next) => {
-    console.log('Method: ', request.method)
-    console.log('Path: ', request.path)
-    console.log('Body: ', request.body)
-    console.log('------')
-    next()
+  console.log('Method: ', request.method)
+  console.log('Path: ', request.path)
+  console.log('Body: ', request.body)
+  console.log('------')
+  next()
 })
 
 app.get('/', (req, res) => {
-    res.send('hello seba')
+  res.send('hello seba')
 })
 
 app.use('/api/countries', countriesRouter)

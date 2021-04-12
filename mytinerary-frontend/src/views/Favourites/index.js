@@ -4,57 +4,56 @@ import Itinerary from '../../components/Itinerary'
 import { Link } from 'react-router-dom'
 
 const Favourites = ({ user }) => {
-    const [favs, setFavs] = useState([])
+  const [favs, setFavs] = useState([])
 
-    const getFavs = async (id) => {
-        const userData = await userServices.getFavs(id)
-        setFavs(userData.favs)
+  const getFavs = async (id) => {
+    const userData = await userServices.getFavs(id)
+    setFavs(userData.favs)
+  }
+
+  useEffect(() => {
+    if (user) {
+      getFavs(user.id)
     }
+  }, [user]) //eslint-disable-line
 
-    useEffect(() => {
-        if(user){
-        getFavs(user.id)
-        }
-    }, [user]) //eslint-disable-line
-
-    return (
+  return (
+    <div>
+      <div>
+        {favs.length > 0
+          ? 'My favourites itineraries'
+          : 'You don\'t have itineraries added to favourites'}
+      </div>
+      {favs.length === 0 &&
         <div>
-            <div> 
-            {favs.length > 0 
-                ? 'My favourites itineraries' 
-                : 'You don\'t have itineraries added to favourites'
-            }
-            </div>
-            {favs.length === 0 && 
-            <div>
-                Go to <Link to='/cities'>Cities Page</Link> and start your itinerary
-            </div>}            
-            <div>
-                {favs.map(i => {
-                    const unFav = async () => {
-                        await userServices.unFav(user.id, i.id)
-                        getFavs(user.id)
-                    } 
-                    return (
-                        <Itinerary
-                            key={i.id}
-                            functionFav={unFav}
-                            itineraryId={i.id}  
-                            itineraryName={i.name}
-                            itineraryRating={i.rating}
-                            itineraryPrice={i.price}
-                            itineraryImage={i.imgUrl}
-                            itineraryHashtags={i.hashtags}
-                            itineraryActivities={i.activities}
-                            itineraryFavs={i.favs}
-                            itineraryComments={i.comments}
-                            city={i.city.name}
-                        />   
-                    )
-                })}
-            </div>
-        </div>
-    )
+          Go to <Link to='/cities'>Cities Page</Link> and start your itinerary
+        </div>}
+      <div>
+        {favs.map(i => {
+          const unFav = async () => {
+            await userServices.unFav(user.id, i.id)
+            getFavs(user.id)
+          }
+          return (
+            <Itinerary
+              key={i.id}
+              functionFav={unFav}
+              itineraryId={i.id}
+              itineraryName={i.name}
+              itineraryRating={i.rating}
+              itineraryPrice={i.price}
+              itineraryImage={i.imgUrl}
+              itineraryHashtags={i.hashtags}
+              itineraryActivities={i.activities}
+              itineraryFavs={i.favs}
+              itineraryComments={i.comments}
+              city={i.city.name}
+            />
+          )
+        })}
+      </div>
+    </div>
+  )
 }
 
 export default Favourites

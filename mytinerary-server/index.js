@@ -6,5 +6,5 @@ const PORT = 3001
 const server = http.createServer(app)
 
 server.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
+  console.log(`Server running on ${PORT}`)
 })

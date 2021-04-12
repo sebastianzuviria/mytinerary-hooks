@@ -2,18 +2,18 @@ import axios from 'axios'
 const baseUrl = 'http://localhost:3001/api/users'
 
 const getFavs = async (id) => {
-    const response = await axios.get(`${baseUrl}/${id}`)
-    return response.data
+  const response = await axios.get(`${baseUrl}/${id}`)
+  return response.data
 }
 
 const unFav = async (userId, itineraryId) => {
-    const response = await axios.put(`${baseUrl}/${userId}`, {itineraryId})
-    return response.data
+  const response = await axios.put(`${baseUrl}/${userId}`, { itineraryId })
+  return response.data
 }
 
 const userServices = {
-    getFavs,
-    unFav
+  getFavs,
+  unFav
 }
 
 export default userServices
