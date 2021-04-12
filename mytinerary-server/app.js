@@ -1,3 +1,4 @@
+const config = require('./utils/config')
 require('dotenv').config()
 const express = require('express')
 const app = express()
@@ -10,10 +11,9 @@ const activitiesRouter = require('./controllers/activities')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const commentsRouter = require('./controllers/comments')
+const middleware = require('./utils/middleware')
 
-const MONGODB_URI = 'mongodb+srv://szuviria:321321321@mytinerary-app.aiu01.mongodb.net/mytinerary?retryWrites=true&w=majority'
-
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
   .then(result => {
     console.log('connected to MongoDB')
   })
@@ -23,13 +23,9 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true,
 
 app.use(cors())
 app.use(express.json())
-app.use('/**', (request, response, next) => {
-  console.log('Method: ', request.method)
-  console.log('Path: ', request.path)
-  console.log('Body: ', request.body)
-  console.log('------')
-  next()
-})
+app.use(middleware.requestLogger)
+app.use(middleware.tokenExtractor)
+
 
 app.get('/', (req, res) => {
   res.send('hello seba')
@@ -42,5 +38,15 @@ app.use('/api/activities', activitiesRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/comments', commentsRouter)
+
+app.get('/*', (req, res) => {
+  let url = path.join(__dirname, '/', 'build', 'index.html');
+  if (!url.startsWith('/app/')) // we're on local windows
+    url = url.substring(1);
+  res.sendFile(url);
+});
+
+app.use(middleware.unknownEndpoint)
+app.use(middleware.errorHandler)
 
 module.exports = app

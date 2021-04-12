@@ -1,6 +1,10 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from './reducers/userReducer'
+import React
+  // , { useEffect } 
+from 'react'
+import { 
+  // useDispatch, 
+  useSelector } from 'react-redux'
+// import { setUser } from './reducers/userReducer'
 import './App.css'
 import {
   BrowserRouter as Router,
@@ -13,23 +17,24 @@ import Cities from './views/Cities/index'
 // import Signup from './views/Signup/index'
 import Itineraries from './views/Itineraries/index'
 import Favourites from './views/Favourites/index'
-import itineraryServices from './services/itineraries'
-import commentServices from './services/comments'
+// import itineraryServices from './services/itineraries'
+// import commentServices from './services/comments'
 import NavBar from './components/NavBar/index'
+import PrivateRoute from './components/PrivateRoute/index'
 
 const App = () => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const user = useSelector(state => state.user)
 
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedMytineraryUser')
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      itineraryServices.setToken(user.token)
-      commentServices.setToken(user.token)
-      dispatch(setUser(user))
-    }
-  }, []) //eslint-disable-line
+  // useEffect(() => {
+  //   const loggedUserJSON = window.localStorage.getItem('loggedMytineraryUser')
+  //   if (loggedUserJSON) {
+  //     const user = JSON.parse(loggedUserJSON)
+  //     itineraryServices.setToken(user.token)
+  //     commentServices.setToken(user.token)
+  //     dispatch(setUser(user))
+  //   }
+  // }, []) //eslint-disable-line
 
   return (
     <Router>
@@ -50,9 +55,9 @@ const App = () => {
             <Route path='/about'>
               <About />
             </Route>
-            <Route path='/favourites'>
+            <PrivateRoute path='/favourites' user={user}>
               <Favourites user={user} />
-            </Route>
+            </PrivateRoute>
             <Route path='/itineraries/:city' component={Itineraries} />
             <Route path='/'>
               <Home />

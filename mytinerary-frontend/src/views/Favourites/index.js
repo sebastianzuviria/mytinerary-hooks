@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import userServices from '../../services/users'
 import Itinerary from '../../components/Itinerary'
 import { Link } from 'react-router-dom'
+import './index.css'
 
 const Favourites = ({ user }) => {
   const [favs, setFavs] = useState([])
@@ -18,12 +19,11 @@ const Favourites = ({ user }) => {
   }, [user]) //eslint-disable-line
 
   return (
-    <div>
-      <div>
+    <div className='Favourites'> 
         {favs.length > 0
-          ? 'My favourites itineraries'
-          : 'You don\'t have itineraries added to favourites'}
-      </div>
+          ? <h3>My favourites itineraries</h3>
+          : <div>You don\'t have itineraries added to favourites</div>
+        }
       {favs.length === 0 &&
         <div>
           Go to <Link to='/cities'>Cities Page</Link> and start your itinerary

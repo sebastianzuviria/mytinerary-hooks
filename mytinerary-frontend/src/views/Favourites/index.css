@@ -1,0 +1,18 @@
+h3 {
+    font-size: 20px;
+}
+
+.Favourites {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 0;
+}
+
+@media (min-width: 560px) {
+    h3 {
+        font-size: 28px;
+    }
+}

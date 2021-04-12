@@ -38,8 +38,6 @@ loginRouter.post('/auth/google', async (request, response) => {
     audience: process.env.CLIENT_ID
   })
 
-  console.log(typeof ticket.getPayload().sub)
-
   const { given_name, family_name, email, picture, sub } = ticket.getPayload()
 
   const userInDb = await User.findOne({ email })

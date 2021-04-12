@@ -96,8 +96,6 @@ commentsRouter.put('/:id', async (request, response) => {
   }
 
   if (body.isLiked) {
-    console.log('liked')
-
     if (wasLiked) {
       comment.likes = comment.likes.filter(l => String(l) !== String(user._id))
       user.likedComments = user.likedComments.filter(l => String(l) !== String(comment._id))
