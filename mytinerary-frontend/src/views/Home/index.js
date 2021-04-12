@@ -59,7 +59,7 @@ const Home = () => {
             </div>
           : <div>
             <div className='BodyContent'>
-              Login and discover the World.
+              Login with Google and discover the World.
             </div>
             <GoogleLogin
               clientId='513500461810-5n00tpak7tr7lti6an6lau1mm8sfnaqj.apps.googleusercontent.com'

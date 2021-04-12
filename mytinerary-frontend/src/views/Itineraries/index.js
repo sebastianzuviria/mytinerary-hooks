@@ -14,8 +14,8 @@ const Itineraries = ({ match }) => {
     dispatch(getItinerariesOf(city))
   }, [dispatch, city])
 
-  const handleFav = async () => {
-    await itineraryServices.favItinerary(city)
+  const handleFav = async (itineraryId) => {
+    await itineraryServices.favItinerary(itineraryId)
     dispatch(getItinerariesOf(city))
   }
 

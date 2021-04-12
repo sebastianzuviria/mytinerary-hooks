@@ -43,7 +43,7 @@ const Itinerary = ({
             {user &&
               <div
                 className='Bookmark' onClick={() => {
-                  functionFav()
+                  functionFav(itineraryId)
                   setIsFav(!isFav)
                 }}
               >{isFav ? <i className='fas fa-bookmark' /> : <i className='far fa-bookmark' />}

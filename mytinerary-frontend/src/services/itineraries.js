@@ -17,12 +17,12 @@ const getItinerariesOf = async (city) => {
   return response.data
 }
 
-const favItinerary = async city => {
+const favItinerary = async itineraryId => {
   const config = {
     headers: { Authorization: token }
   }
 
-  const response = await axios.put(`${baseUrl}/${city}`, null, config)
+  const response = await axios.put(`${baseUrl}/${itineraryId}`, null, config)
   return response.data
 }
 

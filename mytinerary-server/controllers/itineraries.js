@@ -69,37 +69,38 @@ itinerariesRouter.post('/', async (request, response) => {
   response.json(savedItinerary)
 })
 
-itinerariesRouter.put('/:city', async (request, response) => {
-  const city = await City.findOne({ name: request.params.city })
+itinerariesRouter.put('/:id', async (request, response) => {
+  const id = request.params.id
+  const itinerary = await Itinerary.findById(id)
+  
   const token = getTokenFrom(request)
   const decodedToken = jwt.verify(token, process.env.SECRET)
   if (!token || !decodedToken.id) {
     return response.status(401).json({ error: 'token missing or invalid' })
   }
   const user = await User.findById(decodedToken.id)
-  const itinerariesOf = await Itinerary
-    .findOne({ city: city._id }).populate('activities')
 
-  if (!itinerariesOf || !user) {
-    response.status(400).json({ error: 'itinerariesOf not exist' })
+  if (!itinerary || !user) {
+    response.status(400).json({ error: 'itineraries or user not exist' })
   }
 
-  if (itinerariesOf.favs.find(u => String(u) === String(user._id))) {
-    itinerariesOf.favs = itinerariesOf.favs.filter(u => String(u) !== String(user._id))
-    const favedItinerariesOf = await itinerariesOf.save()
+  const isFav = itinerary.favs.find(u => String(u) === String(user._id))
 
-    user.favs = user.favs.filter(a => String(a) !== String(favedItinerariesOf._id))
+  if(isFav) {
+    itinerary.favs = itinerary.favs.filter(u => String(u) !== String(user._id))
+    const favedItinerary = await itinerary.save()
+
+    user.favs = user.favs.filter(a => String(a) !== String(favedItinerary._id))
     await user.save()
 
-    response.json(favedItinerariesOf)
+    response.json(favedItinerary)
   } else {
-    itinerariesOf.favs = itinerariesOf.favs.concat(user._id)
-    const favedItinerariesOf = await itinerariesOf.save()
+    itinerary.favs = itinerary.favs.concat(user._id)
+    const favedItinerary = await itinerary.save()
 
-    user.favs = user.favs.concat(favedItinerariesOf._id)
+    user.favs = user.favs.concat(favedItinerary._id)
     await user.save()
-
-    response.json(favedItinerariesOf)
+    response.json(favedItinerary)
   }
 })
 
