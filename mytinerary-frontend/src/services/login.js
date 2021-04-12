@@ -6,8 +6,14 @@ const login = async credentials => {
     return response.data
 }
 
+const loginGoogle = async googleData => {
+    const response = await axios.post(`${baseUrl}/auth/google`, googleData)
+    return response.data
+}
+
 const loginServices = {
-    login
+    login,
+    loginGoogle
 }
 
 export default loginServices

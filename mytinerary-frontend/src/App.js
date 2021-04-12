@@ -9,8 +9,8 @@ import {
 import Home from './views/Home/index'
 import About from './views/About/index'
 import Cities from './views/Cities/index'
-import Signin from './views/Signin/index'
-import Signup from './views/Signup/index'
+// import Signin from './views/Signin/index'
+// import Signup from './views/Signup/index'
 import Itineraries from './views/Itineraries/index'
 import Favourites from './views/Favourites/index'
 import itineraryServices from './services/itineraries'
@@ -39,12 +39,12 @@ const App = () => {
       <NavBar />
       <div>
         <Switch>
-          <Route path='/signup'>
+          {/* <Route path='/signup'>
             <Signup />
           </Route>
           <Route path='/signin'>
             <Signin />
-          </Route>
+          </Route> */}
           <Route path='/cities'>
             <Cities />
           </Route>

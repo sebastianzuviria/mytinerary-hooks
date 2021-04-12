@@ -1,13 +1,42 @@
 import './index.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import travelIcon from '../../images/travel.png'
 import musicIcon from '../../images/music.png'
 import cutleryIcon from '../../images/cutlery.png'
 import beachIcon from '../../images/beach.png'
+import { GoogleLogin } from 'react-google-login'
+import itineraryServices from '../../services/itineraries'
+import loginServices from '../../services/login'
+import commentServices from '../../services/comments'
+import { useHistory } from 'react-router-dom'
+import { setUser } from '../../reducers/userReducer'
 
 const Home = () => {
     const user = useSelector(state => state.user)
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+
+    const handleLoginGoogle = async googleData => {
+        try {
+            const user = await loginServices.loginGoogle(googleData)
+            window.localStorage.setItem(
+                'loggedMytineraryUser', JSON.stringify(user)
+            )
+            itineraryServices.setToken(user.token)
+            commentServices.setToken(user.token)
+            dispatch(setUser(user))
+            history.push('/')
+        } catch (exception) {
+            console.log(exception)
+        }
+    }
+
+    const errorGoogle = (response) => {
+        console.log(response.profileObj);
+    }  
+
 
     return (
         <div className="Home">
@@ -36,9 +65,22 @@ const Home = () => {
                     <div className="BodyContent">
                         Login and discover the World.
                     </div>
-                    <Link className="ButtonStart" to='/signin'>
+                    <GoogleLogin
+                          clientId="513500461810-5n00tpak7tr7lti6an6lau1mm8sfnaqj.apps.googleusercontent.com"
+                          buttonText="Login"
+                          render={renderProps => (
+                            <Link className="ButtonStart" onClick={renderProps.onClick} disabled={renderProps.disabled} to="/cities">
+                            Get Started
+                            </Link>
+                          )}
+                          onSuccess={handleLoginGoogle}
+                          onFailure={errorGoogle}
+                          cookiePolicy={'single_host_origin'}
+                          isSignedIn={true}
+                    />
+                    {/* <Link className="ButtonStart" to='/signin'>
                         Get Started
-                    </Link>
+                    </Link> */}
                 </div>
                 }
             </div>

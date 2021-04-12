@@ -3,6 +3,7 @@ const commentsRouter = require('express').Router()
 const Comment = require('../models/comment')
 const User = require('../models/user')
 const Itinerary = require('../models/itinerary')
+const { findByIdAndUpdate } = require('../models/user')
 
 const getTokenFrom = request => {
     const authorization = request.get('authorization')
@@ -62,10 +63,16 @@ commentsRouter.delete('/:id', async (request, response) => {
     if (String(comment.user) === String(user._id)) {
         const deletedComment = await Comment.findByIdAndDelete(id)
         
-        user.comments = user.comments.filter(c => String(c) !== String(deletedComment._id))
+        const allUsers = await User.find({})
+        allUsers.forEach(async u => {
+            u.comments = u.comments.filter(c => String(c) !== String(deletedComment._id))
+            u.likedComments = u.likedComments.filter(lc => String(lc) !== String(deletedComment._id))
+            u.dislikedComments = u.dislikedComments.filter(dc => String(dc) !== String(deletedComment._id))
+            await u.save()
+        })
+
         itinerary.comments = itinerary.comments.filter(c => String(c) !== String(deletedComment._id))
         
-        await user.save()
         await itinerary.save()
         
         response.status(204).end()

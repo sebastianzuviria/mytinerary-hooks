@@ -53,6 +53,7 @@ usersRouter.post('/', async (request, response) => {
     const user = new User({
         username: body.username,
         email: body.email,
+        googleId: '',
         firstName: body.firstName,
         lastName: body.lastName,
         imgUrl: body.imgUrl,

@@ -38,6 +38,7 @@
     background-position: center;
     background-size: cover;
     margin: 10px;
+    border-radius: 100%;
 }
 
 .UserName {
