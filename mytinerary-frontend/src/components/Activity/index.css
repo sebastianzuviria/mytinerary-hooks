@@ -15,7 +15,7 @@
 
 .ActivityImage {
     width: 100px;
-    height: 100px;
+    height: 100%;
     background-position: center;
     background-size: cover;
     border-top-right-radius: 15px;
@@ -74,7 +74,7 @@
     
     .ActivityImage {
         width: 200px;
-        height: 100px;
+        height: 100%;
         background-position: center;
         background-size: cover;
         border-top-right-radius: 15px;

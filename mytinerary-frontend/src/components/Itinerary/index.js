@@ -1,7 +1,7 @@
 import './index.css'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import Activity from '../Activity/index'
+import Activities from '../Activities/index'
 import Comment from '../Comment/index'
 import CommentForm from '../CommentForm/index'
 
@@ -19,7 +19,6 @@ const Itinerary = ({
   city
 }) => {
   const [display, setDisplay] = useState(false)
-  const [index, setIndex] = useState(0)
   const [isFav, setIsFav] = useState(false)
   const user = useSelector(state => state.user)
 
@@ -66,53 +65,9 @@ const Itinerary = ({
           <button className='ButtonActivities' onClick={() => setDisplay(!display)}>Activities</button>
         </div>
       </div>
-      {itineraryActivities.length === 0
-        ? <div>No activities to show</div>
-        : <div style={show}>
-          {itineraryActivities.reduce((acc, itinerary, i, arr) => {
-            const handleCarouselNext = () => {
-              if (index + 1 === arr.length) {
-                return index
-              } else {
-                setIndex(index + 1)
-              }
-            }
-
-            const handleCarouselBack = () => {
-              if (index === 0) {
-                return index
-              } else {
-                setIndex(index - 1)
-              }
-            }
-
-            return (
-              <div className='Activities'>
-                <div className='SliderContent'>
-                  <div onClick={handleCarouselBack}><i className='fas fa-chevron-left SliderArrow' /></div>
-                  <Activity
-                    key={arr[index].id}
-                    activityId={arr[index].id}
-                    activityName={arr[index].name}
-                    activityAddress={arr[index].address}
-                    activityDescription={arr[index].description}
-                    activityDuration={arr[index].duration}
-                    activityPrice={arr[index].price}
-                    activityImage={arr[index].imgUrl}
-                  />
-                  <div className='SliderArrow' onClick={handleCarouselNext}>
-                    <i className='fas fa-chevron-right SliderArrow' />
-                  </div>
-                </div>
-                <div style={{ display: 'flex' }}>
-                  {arr.length === 0
-                    ? <div>There is not activity regitered</div>
-                    : <div className='SliderFooter'>{index + 1} of {arr.length} {index === 1 ? 'activity' : 'activities'}</div>}
-                </div>
-              </div>
-            )
-          })}
-        </div>}
+      <div style={show}>
+        <Activities activities={itineraryActivities}/>
+      </div>
       <div className='CommentTitle'>Comments</div>
       {itineraryComments.length === 0
         ? <div className='CommentTitle'>No comments</div>

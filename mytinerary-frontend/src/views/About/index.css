@@ -1,0 +1,82 @@
+.About {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 14px;
+    margin: 0;
+    margin-right: 10px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    font-size: 12px;
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.ListContainer {
+    display: flex;
+    justify-content: left;
+    padding: 30px;
+}
+
+.List {
+    text-align: left;
+}
+
+.AboutContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 90%;
+}
+
+.Github {
+    font-size: 32px;
+    margin: 20px;
+}
+
+.Link {
+    font-weight: bold;
+}
+
+.Linkedin {
+    color: rgb(57, 129, 211);
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+@media (min-width: 865px) {
+    h3 {
+        font-size: 32px;
+    }
+    
+    h4 {
+        font-size: 20px;
+        margin: 0;
+        margin-right: 10px;
+    }
+    
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    
+    li {
+        font-size: 16px;
+        list-style: none;
+        margin-bottom: 10px;
+    }
+}

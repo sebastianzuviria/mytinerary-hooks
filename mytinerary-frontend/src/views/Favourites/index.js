@@ -19,11 +19,10 @@ const Favourites = ({ user }) => {
   }, [user]) //eslint-disable-line
 
   return (
-    <div className='Favourites'> 
-        {favs.length > 0
-          ? <h3>My favourites itineraries</h3>
-          : <div>You don\'t have itineraries added to favourites</div>
-        }
+    <div className='Favourites'>
+      {favs.length > 0
+        ? <h3>My favourites itineraries</h3>
+        : <div>You don\'t have itineraries added to favourites</div>}
       {favs.length === 0 &&
         <div>
           Go to <Link to='/cities'>Cities Page</Link> and start your itinerary

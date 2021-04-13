@@ -23,13 +23,9 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('build'))
 app.use(middleware.requestLogger)
 app.use(middleware.tokenExtractor)
-
-
-app.get('/', (req, res) => {
-  res.send('hello seba')
-})
 
 app.use('/api/countries', countriesRouter)
 app.use('/api/cities', citiesRouter)
